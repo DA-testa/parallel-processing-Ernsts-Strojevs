@@ -6,12 +6,12 @@ def parallel_processing(n, m, data):
     # TODO: write the function for simulating parallel tasks, 
     # create the output pairs
     heap = [(0, i) for i in range(n)]
-    job_start_times = [None] * m
+    job = [None] * m
     for i in range(m):
-        start_time, thread = heapq.heappop(heap)
-        job_start_times[i] = (thread, start_time)
-        heapq.heappush(heap, (start_time + data[i], thread))
-    return job_start_times
+        start, thread = heapq.heappop(heap)
+        job[i] = (thread, start)
+        heapq.heappush(heap, (start + data[i], thread))
+    return job
 
 def main():
     # TODO: create input from keyboard
